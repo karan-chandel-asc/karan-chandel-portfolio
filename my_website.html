@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karan Chandel — AI tools you can click</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12172b;
+    --navy:#3730a3;
+    --navy-deep:#241f7a;
+    --coral:#ff6b4a;
+    --bg:#ffffff;
+    --panel:#f7f7fb;
+    --muted:#6b7080;
+    --line:#e7e7ef;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  h1,h2,h3{font-family:'Sora',sans-serif;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  nav{padding:22px 0;border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;}
+  .logo span{color:var(--navy);}
+  .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--muted);align-items:center;}
+  .navlinks a:hover{color:var(--navy);}
+  .nav-cta{
+    background:var(--ink);color:#fff;padding:9px 18px;border-radius:8px;font-weight:500;font-size:14px;
+  }
+
+  /* HERO */
+  .hero{padding:100px 0 70px;}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--panel);border:1px solid var(--line);
+    padding:7px 14px;border-radius:20px;font-size:13.5px;color:var(--navy-deep);
+    margin-bottom:22px;font-weight:500;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);}
+  h1{
+    font-size:clamp(34px,4.4vw,50px);
+    font-weight:700;line-height:1.14;letter-spacing:-1px;
+    margin-bottom:20px;
+  }
+  .hero p.lede{font-size:17.5px;color:var(--muted);max-width:46ch;margin-bottom:32px;}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{padding:13px 24px;border-radius:9px;font-weight:600;font-size:15px;display:inline-block;}
+  .btn.primary{background:var(--navy);color:#fff;}
+  .btn.primary:hover{background:var(--navy-deep);}
+  .btn.outline{border:1.5px solid var(--line);color:var(--ink);}
+  .btn.outline:hover{border-color:var(--navy);}
+
+  .hero-visual{
+    background:linear-gradient(155deg,#eef0fb,#fdeee9 120%);
+    border-radius:20px;padding:32px;border:1px solid var(--line);
+  }
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--line);}
+  .stat-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--navy);}
+  .stat-label{font-size:13px;color:var(--muted);margin-top:4px;}
+
+  /* PROJECTS - bento */
+  section{padding:88px 0;}
+  .sec-label{color:var(--navy);font-weight:600;font-size:14px;margin-bottom:10px;}
+  .sec-head h2{font-size:30px;font-weight:700;letter-spacing:-0.5px;max-width:24ch;margin-bottom:14px;}
+  .sec-head p{color:var(--muted);max-width:56ch;font-size:16px;margin-bottom:48px;}
+
+  .bento{
+    display:grid;
+    grid-template-columns:1.18fr 0.82fr;
+    gap:20px;
+    align-items:start;
+  }
+  .bento-col{display:flex;flex-direction:column;gap:20px;}
+  .bento-col-side{padding-top:28px;}
+  @media(max-width:860px){
+    .bento{grid-template-columns:1fr;}
+    .bento-col-side{padding-top:0;}
+  }
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,23,43,0.08);}
+  .card.large,.card.small{min-height:0;padding:0;}
+  @media(max-width:860px){.card.large,.card.small{grid-column:span 1;}}
+  .card-shot{
+    display:block;aspect-ratio:16/10;overflow:hidden;background:#eceafc;
+    border-bottom:1px solid var(--line);
+  }
+  .card-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .25s;}
+  .card:hover .card-shot img{transform:scale(1.03);}
+  .card-body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:4px;}
+  .card-foot{padding:0 24px 22px;}
+  .card-tag{
+    display:inline-block;font-size:12px;font-weight:600;color:var(--navy);
+    background:#eceafc;padding:4px 10px;border-radius:6px;margin-bottom:14px;width:fit-content;
+  }
+  .card h3{font-size:20px;margin-bottom:10px;}
+  .card p{color:var(--muted);font-size:14.5px;margin-bottom:16px;}
+  .card-stack{display:flex;flex-wrap:wrap;gap:8px;}
+  .stack-pill{font-size:12px;color:var(--ink);background:#fff;border:1px solid var(--line);padding:4px 10px;border-radius:14px;}
+  .card-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;}
+  .proj-link{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12px;font-weight:600;
+    padding:6px 11px;border-radius:999px;
+    border:1px solid var(--line);background:#fff;
+    transition:border-color .15s, background .15s, color .15s;
+  }
+  .proj-link:hover{border-color:var(--navy);}
+  .proj-link.live:hover{border-color:#16a34a;}
+  .live-dot{
+    width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;
+    box-shadow:0 0 0 0 rgba(34,197,94,.45);
+    animation:livepulse 1.8s ease-out infinite;
+  }
+  @keyframes livepulse{
+    0%{box-shadow:0 0 0 0 rgba(34,197,94,.45);}
+    70%{box-shadow:0 0 0 6px rgba(34,197,94,0);}
+    100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}
+  }
+  .proj-link .host{
+    color:var(--muted);font-weight:500;font-size:11.5px;
+    max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .proj-link.readme{
+    background:transparent;border-color:transparent;color:var(--muted);padding-left:6px;
+  }
+  .proj-link.readme:hover{background:transparent;color:var(--navy);}
+  .service-icon{
+    width:38px;height:38px;border-radius:10px;background:var(--navy);margin-bottom:18px;
+    display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .service-icon svg{display:block;}
+
+  .card-lede{
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    margin-bottom:10px;
+  }
+  .card p.card-lede{margin-bottom:10px;}
+  .card-expand{margin:0 0 4px;}
+  .card-expand summary{
+    list-style:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--navy);
+    user-select:none;
+    width:fit-content;
+    max-width:100%;
+    flex-wrap:wrap;
+  }
+  .card-expand summary::-webkit-details-marker{display:none;}
+  .card-expand summary::marker{content:"";}
+  .chevron{
+    width:28px;height:28px;border-radius:50%;
+    border:1px solid var(--line);background:#fff;
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .2s, border-color .15s, background .15s;
+  }
+  .chevron svg{display:block;}
+  .card-expand summary:hover .chevron{border-color:var(--navy);background:#eceafc;}
+  .card-expand[open] .chevron{transform:rotate(180deg);border-color:var(--navy);}
+  .desc-full{
+    margin-top:14px;
+    padding:16px 16px 14px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+  }
+  .desc-full h4{
+    font-family:'Sora',sans-serif;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    color:var(--navy);
+    margin:14px 0 6px;
+  }
+  .desc-full h4:first-child{margin-top:0;}
+  .card .desc-full p{
+    color:var(--muted);
+    font-size:13.5px;
+    margin-bottom:0;
+    line-height:1.55;
+  }
+  .desc-full ul{
+    margin:0;
+    padding-left:18px;
+    color:var(--muted);
+    font-size:13.5px;
+  }
+  .desc-full li{margin-bottom:5px;}
+  .desc-full li:last-child{margin-bottom:0;}
+
+  /* PATTERN TRANSLATOR */
+  .pattern-table{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;}
+  .pattern-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    padding:22px 28px;border-top:1px solid var(--line);align-items:center;
+  }
+  .pattern-row:first-child{border-top:none;}
+  @media(max-width:700px){.pattern-row{grid-template-columns:1fr;gap:8px;}}
+  .pattern-head{
+    background:var(--panel);font-size:12.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.4px;color:var(--muted);padding:16px 28px;
+  }
+  .p-quote{font-size:15px;color:var(--ink);}
+  .p-quote em{color:var(--muted);font-style:italic;}
+  .p-arrow{color:var(--navy);font-weight:700;margin-right:6px;}
+  .p-tag{
+    display:inline-block;font-size:11.5px;font-weight:600;color:var(--navy);
+    background:#eceafc;padding:3px 9px;border-radius:6px;margin-left:10px;white-space:nowrap;
+  }
+  .pattern-row.pattern-open{
+    background:linear-gradient(120deg,#f3f1fd,#fdf1ee);
+  }
+  .p-yours{font-weight:600;}
+  .p-cta{color:var(--navy);font-weight:700;}
+  .p-cta:hover{color:var(--coral);}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:760px){.services-grid{grid-template-columns:1fr;}}
+  .service{padding:26px;border-radius:14px;border:1px solid var(--line);}
+  .service h3{font-size:17px;margin-bottom:8px;}
+  .service p{font-size:14px;color:var(--muted);}
+
+  /* CTA */
+  .cta-section{
+    background:var(--ink);border-radius:24px;padding:64px 48px;color:#fff;
+    display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;
+  }
+  .cta-section h2{color:#fff;font-size:28px;max-width:16ch;}
+  .cta-section p{color:#c7c9d6;margin-top:10px;max-width:40ch;}
+  .cta-section .btn.primary{background:var(--coral);}
+  .cta-section .btn.primary:hover{background:#ff8161;}
+  .cta-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .cta-section .btn.ghost{
+    border:1.5px solid rgba(255,255,255,0.28);color:#fff;
+  }
+  .cta-section .btn.ghost:hover{border-color:#fff;}
+  .cta-meta{
+    display:flex;flex-wrap:wrap;gap:8px 22px;
+    margin-top:18px;font-size:14px;color:#c7c9d6;
+  }
+  .cta-meta a{color:#fff;font-weight:600;}
+  .cta-meta a:hover{color:var(--coral);}
+
+  footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;text-align:center;}
+  footer a{color:var(--navy);font-weight:500;}
+  footer a:hover{color:var(--coral);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Karan<span>.</span>Chandel</div>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact" class="nav-cta">Start a project</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Available for new projects</div>
+      <h1>I build AI tools you can actually click.</h1>
+      <p class="lede">Phone agents that book rooms, search that finds the clause in a 200-page PDF, and inboxes that sort themselves. Five products. Three of them are live right now.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="#work">See the work</a>
+        <a class="btn outline" href="#contact">Email me</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Full products, not slide decks</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Live demos you can open today</div></div>
+        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Agents in one strategy run</div></div>
+        <div class="stat-card"><div class="stat-num">1 day</div><div class="stat-label">Typical reply time</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">Selected work</div>
+      <h2>Five products. Click Live.</h2>
+      <p>Each one is a real UI, a real API, and workers doing the heavy lifting. Open a live demo, or watch a short walkthrough where I have one.</p>
+    </div>
+
+    <div class="bento">
+      <div class="bento-col bento-col-main">
+      <div class="card large">
+        <a class="card-shot" href="http://15.252.17.34/" target="_blank" rel="noopener">
+          <img src="assets/lexora.png" alt="Lexora lawyer dashboard">
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Legal Tech</div>
+          <h3>Lexora — Legal AI Case Management</h3>
+          <p class="card-lede">A workspace for law firms to manage cases, find answers in their own documents, and keep hearings in one place.</p>
+          <details class="card-expand">
+            <summary aria-label="Show Lexora details">
+              <span>Details</span>
+              <span class="chevron" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </summary>
+            <div class="desc-full">
+              <h4>Problems it solves</h4>
+              <ul>
+                <li>A lawyer needs a clause from a 200-page PDF and cannot remember which file it was in</li>
+                <li>Associates spend hours re-reading the same case files the night before a hearing</li>
+                <li>Generic AI answers cannot be used with a client because there is no source to point to</li>
+                <li>Hearing dates live in notebooks or WhatsApp chats and get missed</li>
+                <li>Cases, documents, and notes are scattered across folders, email, and spreadsheets</li>
+                <li>A new associate joining a matter has no fast way to ask the file “what happened so far?”</li>
+              </ul>
+              <h4>Technical highlights</h4>
+              <ul>
+                <li>PDF upload pipeline: Django saves the file, Celery chunks and embeds, Pinecone stores vectors by case</li>
+                <li>Case-aware RAG chat on FastAPI + LangGraph + Groq, with answers tied back to source passages</li>
+                <li>Docker Compose stack deployed on AWS EC2</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="card-foot">
+          <div class="card-stack">
+            <span class="stack-pill">Django</span>
+            <span class="stack-pill">FastAPI</span>
+            <span class="stack-pill">Pinecone</span>
+            <span class="stack-pill">Groq</span>
+          </div>
+          <div class="card-links">
+            <a class="proj-link live" href="http://15.252.17.34/" target="_blank" rel="noopener">
+              <span class="live-dot"></span> Live
+            </a>
+            <a class="proj-link" href="https://drive.google.com/file/d/1HV7-rRZnhPsL9fIy8KQ1CKWqnh5CRm1W/view?usp=sharing" target="_blank" rel="noopener">Watch demo</a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_Legal_AI_Case_Management_Platform/blob/master/README.md" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card large">
+        <a class="card-shot" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener">
+          <img src="assets/supportai.png" alt="SupportAI admin dashboard">
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Customer Support</div>
+          <h3>SupportAI — Customer Support Automation</h3>
+          <p class="card-lede">Inbound emails become classified, prioritized, and assigned tickets — with a separate queue for admins and agents.</p>
+          <details class="card-expand">
+            <summary aria-label="Show SupportAI details">
+              <span>Details</span>
+              <span class="chevron" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </summary>
+            <div class="desc-full">
+              <h4>Problems it solves</h4>
+              <ul>
+                <li>Support emails sit unread for hours because nobody triaged the shared inbox</li>
+                <li>An angry VIP looks the same as a password-reset in a pile of unsorted mail</li>
+                <li>Agents cherry-pick easy tickets and SLA on the hard ones slips</li>
+                <li>Managers cannot see volume, sentiment, or who owns what without a spreadsheet</li>
+                <li>The same “how do I reset…” reply gets typed out by hand every day</li>
+                <li>Weekend mail piles up until Monday with no routing and no owner</li>
+              </ul>
+              <h4>Technical highlights</h4>
+              <ul>
+                <li>IMAP poll of a shared support inbox creates or matches a customer and opens a ticket</li>
+                <li>Groq classifies category, priority, and sentiment, with a rule-based fallback</li>
+                <li>Admins see the full workspace; agents only see tickets in My Queue</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="card-foot">
+          <div class="card-stack">
+            <span class="stack-pill">Django</span>
+            <span class="stack-pill">IMAP</span>
+            <span class="stack-pill">Groq</span>
+          </div>
+          <div class="card-links">
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card large">
+        <a class="card-shot" href="http://15.252.182.117/" target="_blank" rel="noopener">
+          <img src="assets/fieldline.png" alt="Fieldline document dashboard">
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Document AI</div>
+          <h3>Fieldline — Document Intelligence</h3>
+          <p class="card-lede">Upload PDFs, extract the fields, check them on the page, then export JSON or CSV — without retyping invoices.</p>
+          <details class="card-expand">
+            <summary aria-label="Show Fieldline details">
+              <span>Details</span>
+              <span class="chevron" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </summary>
+            <div class="desc-full">
+              <h4>Problems it solves</h4>
+              <ul>
+                <li>Someone retypes every invoice into a spreadsheet by hand</li>
+                <li>A wrong amount gets copied and nobody notices until the client calls</li>
+                <li>Different document layouts break a one-size-fits-all template</li>
+                <li>Ops cannot tell which files failed versus which still need a human look</li>
+                <li>Extracted data has no way back to the PDF page it came from</li>
+                <li>Shipping JSON to another system means another round of copy-paste</li>
+              </ul>
+              <h4>Technical highlights</h4>
+              <ul>
+                <li>Celery renders each page with PyMuPDF and captures word boxes</li>
+                <li>Groq returns structured JSON, then values are matched onto the page</li>
+                <li>Human review UI with a live page image and highlighted matches</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="card-foot">
+          <div class="card-stack">
+            <span class="stack-pill">PyMuPDF</span>
+            <span class="stack-pill">Celery</span>
+            <span class="stack-pill">Groq</span>
+          </div>
+          <div class="card-links">
+            <a class="proj-link live" href="http://15.252.182.117/" target="_blank" rel="noopener">
+              <span class="live-dot"></span> Live
+            </a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/fieldline-document-intelligence/blob/setup_ui_and_auth/README.md" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="bento-col bento-col-side">
+      <div class="card small">
+        <a class="card-shot" href="http://3.93.236.46:8000/" target="_blank" rel="noopener">
+          <img src="assets/strategy.png" alt="Strategy Engine report">
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Multi-agent AI</div>
+          <h3>Autonomous AI Strategy Engine</h3>
+          <p class="card-lede">Give it a business question. Seven agents research in parallel and hand back one strategy report.</p>
+          <details class="card-expand">
+            <summary aria-label="Show Strategy Engine details">
+              <span>Details</span>
+              <span class="chevron" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </summary>
+            <div class="desc-full">
+              <h4>Problems it solves</h4>
+              <ul>
+                <li>A founder spends weeks researching a market move and still has no single report to share</li>
+                <li>Competitive notes live in five browser tabs and a messy Google Doc</li>
+                <li>Strategy decks skip risk because nobody had time to look it up</li>
+                <li>The team debates expansion with opinions instead of sources</li>
+                <li>Uploaded research PDFs never get used when the actual plan is written</li>
+                <li>Waiting on a consultant for a first-pass strategy that should take one afternoon</li>
+              </ul>
+              <h4>Technical highlights</h4>
+              <ul>
+                <li>7 parallel agents covering market, competitors, risk, monetization, and roadmap</li>
+                <li>Hybrid RAG over your documents with Cohere + Pinecone</li>
+                <li>Live progress streamed to the UI via SSE</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="card-foot">
+          <div class="card-stack">
+            <span class="stack-pill">LangChain</span>
+            <span class="stack-pill">Groq</span>
+            <span class="stack-pill">Pinecone</span>
+          </div>
+          <div class="card-links">
+            <a class="proj-link live" href="http://3.93.236.46:8000/" target="_blank" rel="noopener">
+              <span class="live-dot"></span> Live
+            </a>
+            <a class="proj-link" href="https://drive.google.com/file/d/1tZ-6SqX62Te6gPT1s_nhXNWS10ctGmNq/view?usp=sharing" target="_blank" rel="noopener">Watch demo</a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Autonomous-Ai-Strategy-Engine/blob/main/README.md" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card small">
+        <a class="card-shot" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener">
+          <img src="assets/deskline.png" alt="Deskline operations dashboard">
+        </a>
+        <div class="card-body">
+          <div class="card-tag">Hospitality</div>
+          <h3>Deskline — AI Voice Agents for Hospitality</h3>
+          <p class="card-lede">AI answers the hotel or restaurant phone, books a room or a table, and logs the call — no Retell or Vapi.</p>
+          <details class="card-expand">
+            <summary aria-label="Show Deskline details">
+              <span>Details</span>
+              <span class="chevron" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </summary>
+            <div class="desc-full">
+              <h4>Problems it solves</h4>
+              <ul>
+                <li>Front desk misses calls when the lobby is busy</li>
+                <li>Guests hang up instead of waiting on hold to book a room or a table</li>
+                <li>After-hours bookings go to voicemail and never get followed up</li>
+                <li>Staff retype the same reservation details into the system after every call</li>
+                <li>There is no record of what the caller asked or whether a booking was made</li>
+                <li>Hotels do not want another monthly voice-AI wrapper fee on top of the phone bill</li>
+              </ul>
+              <h4>Technical highlights</h4>
+              <ul>
+                <li>Owned stack: Twilio ConversationRelay + Groq + Django + FastAPI</li>
+                <li>Tool calling for book_room and book_table, saved to the local database</li>
+                <li>Dashboard, call history, and analytics for outcome and sentiment</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+        <div class="card-foot">
+          <div class="card-stack">
+            <span class="stack-pill">Twilio</span>
+            <span class="stack-pill">Deepgram</span>
+            <span class="stack-pill">FastAPI</span>
+          </div>
+          <div class="card-links">
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card small">
+        <div class="card-body" style="padding-top:26px;">
+          <div class="card-tag">And more</div>
+          <h3>Got a messy workflow?</h3>
+          <p class="card-lede">Tell me what your team does by hand. I’ll tell you what’s realistic to automate — and what isn’t.</p>
+          <div class="card-links">
+            <a class="proj-link live" href="#contact">Email me →</a>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pattern" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">The pattern</div>
+      <h2>Different problem. Same kind of build.</h2>
+      <p>Messy input in. Something a human can trust out. That’s the job — whether it’s a PDF, a phone call, or an inbox.</p>
+    </div>
+
+    <div class="pattern-table">
+      <div class="pattern-row pattern-head">
+        <div>What they said</div>
+        <div>What it became</div>
+      </div>
+
+      <div class="pattern-row">
+        <div><span class="p-quote">"We can't find anything in our case files."</span></div>
+        <div><span class="p-arrow">→</span> Search the files and get answers with sources <span class="p-tag">Lexora</span></div>
+      </div>
+
+      <div class="pattern-row">
+        <div><span class="p-quote">"Every market decision takes weeks of research."</span></div>
+        <div><span class="p-arrow">→</span> Seven agents research in parallel and write one report <span class="p-tag">Strategy Engine</span></div>
+      </div>
+
+      <div class="pattern-row">
+        <div><span class="p-quote">"We miss calls when the front desk is busy."</span></div>
+        <div><span class="p-arrow">→</span> A voice agent that answers, books, and logs the call <span class="p-tag">Deskline</span></div>
+      </div>
+
+      <div class="pattern-row">
+        <div><span class="p-quote">"Support emails sit unread for hours."</span></div>
+        <div><span class="p-arrow">→</span> Email becomes a classified, assigned ticket <span class="p-tag">SupportAI</span></div>
+      </div>
+
+      <div class="pattern-row">
+        <div><span class="p-quote">"Someone retypes every invoice by hand."</span></div>
+        <div><span class="p-arrow">→</span> Extract the fields, check them on the page, export <span class="p-tag">Fieldline</span></div>
+      </div>
+
+      <div class="pattern-row pattern-open">
+        <div><span class="p-quote p-yours">"Ours is <em>______________</em>."</span></div>
+        <div><span class="p-arrow">→</span> <a href="#contact" class="p-cta">Tell me. I’ll say what’s realistic →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:#fff;">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">How I can help</div>
+      <h2>Usually it starts as one of these</h2>
+      <p>If your problem doesn’t fit a box, that’s normal. Most real ones don’t.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+        </div>
+        <h3>Chat with your documents</h3>
+        <p>Ask a question. Get an answer with a source you can open.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+        </div>
+        <h3>Pull data out of PDFs</h3>
+        <p>Invoices, forms, packets — extracted, checked on the page, exported.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.77.59 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.16a2 2 0 0 1 2.11-.45c.83.27 1.7.47 2.6.59A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3>Answer the phone or the inbox</h3>
+        <p>Bookings on a call, or tickets from email, without a person on every one.</p>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:14.5px;margin-top:24px;">Working on something that doesn't fit neatly into these? Good — most real problems don't. <a href="#contact" style="color:var(--navy);font-weight:600;">Tell me about it</a>.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-section">
+      <div>
+        <h2>Got a workflow worth automating?</h2>
+        <p>Send a few lines about what your team does by hand. I reply within a day.</p>
+        <div class="cta-meta">
+          <span>Email: <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a></span>
+        </div>
+      </div>
+      <div class="cta-actions">
+        <a class="btn primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">Contact me →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Karan Chandel · <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a></footer>
+
+</body>
+</html>
