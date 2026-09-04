@@ -368,7 +368,6 @@
   .form-status{font-size:13.5px;min-height:1.2em;}
   .form-status.ok{color:#86efac;}
   .form-status.err{color:#fda4af;}
-  .honeypot{position:absolute;left:-9999px;opacity:0;height:0;width:0;}
   .proj-soon{
     font-size:12px;font-weight:600;color:var(--muted);padding:6px 4px;
   }
@@ -828,12 +827,7 @@
         <p class="form-alt cta-direct">Prefer to skip the form? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-track="email" data-project="Contact">Email</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener" data-track="whatsapp" data-project="Contact">WhatsApp</a></p>
         <p class="cta-pdf">Need something to forward internally? <a href="assets/karan-chandel-onepager.pdf" download="Karan-Chandel-AI-Engineer.pdf" data-track="resume" data-project="One-pager">Download a one-page PDF</a>.</p>
       </div>
-      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ascaisystems@gmail.com" method="POST">
-        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="_subject" value="Project inquiry from karan-chandel-portfolio">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" id="form-next" value="https://karan-chandel-portfolio.vercel.app/?sent=1#contact">
+      <form class="contact-form" id="contact-form">
         <label for="contact-name">Name</label>
         <input id="contact-name" name="name" type="text" placeholder="Your name" required autocomplete="name">
         <label for="contact-email">Email</label>
@@ -910,27 +904,63 @@
   var status = document.getElementById("form-status");
   if (!form) return;
 
-  var next = document.getElementById("form-next");
-  if (next && location.protocol !== "file:") {
-    next.value = location.origin + location.pathname + "?sent=1#contact";
-  }
-
-  if (/[?&]sent=1(?:&|$)/.test(location.search) && status) {
-    status.className = "form-status ok";
-    status.textContent = "Got it. I’ll reply within a day.";
-  }
-
-  form.addEventListener("submit", function () {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
     var btn = form.querySelector("button[type=submit]");
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = "Sending…";
-    }
+    var originalBtnText = btn ? btn.textContent : "";
+    var name = document.getElementById("contact-name").value.trim();
+    var email = document.getElementById("contact-email").value.trim();
+    var message = document.getElementById("contact-message").value.trim();
+    var gmail = "https://mail.google.com/mail/?view=cm&fs=1&to=ascaisystems@gmail.com&su=" +
+      encodeURIComponent("Project inquiry from " + name) +
+      "&body=" + encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message);
+
     if (status) {
       status.className = "form-status";
       status.textContent = "Sending…";
     }
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+    }
     track("contact_submit", { project: "Contact", action: "form" });
+
+    fetch("https://formsubmit.co/ajax/ascaisystems@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message,
+        _subject: "Project inquiry from karan-chandel-portfolio",
+        _template: "box",
+        _captcha: "false"
+      })
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (result) {
+        if (result.ok && result.data && String(result.data.success) === "true") {
+          if (status) {
+            status.className = "form-status ok";
+            status.textContent = "Sent successfully. I’ll reply within a day.";
+          }
+          form.reset();
+          return;
+        }
+        throw new Error("formsubmit");
+      })
+      .catch(function () {
+        if (status) {
+          status.className = "form-status err";
+          status.innerHTML = "Couldn’t send from here. <a href=\"" + gmail + "\" target=\"_blank\" rel=\"noopener\">Open Gmail to send it</a>.";
+        }
+      })
+      .finally(function () {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = originalBtnText;
+        }
+      });
   });
 })();
 </script>
