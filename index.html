@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karan Chandel — AI tools you can click</title>
+<title>Karan Chandel — AI Tools You Can Click</title>
 <meta name="description" content="Karan Chandel — freelance AI engineer. I build RAG, voice agents, and document tools you can actually click.">
 <meta property="og:title" content="Karan Chandel — AI Tools You Can Click">
 <meta property="og:description" content="Production AI applications: case-aware RAG legal platforms, parallel research engines, and document intelligence.">
 <meta property="og:image" content="assets/lexora.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/favicon.svg">
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,17 +30,22 @@
     --line:#e7e7ef;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:hidden;}
   h1,h2,h3{font-family:'Sora',sans-serif;}
   a{text-decoration:none;color:inherit;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  @media(max-width:860px){.wrap{padding:0 20px;}}
 
   nav{padding:22px 0;border-bottom:1px solid var(--line);}
   nav .wrap{display:flex;justify-content:space-between;align-items:center;}
   .logo{font-family:'Sora',sans-serif;font-weight:700;font-size:17px;}
   .logo span{color:var(--navy);}
   .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--muted);align-items:center;}
+  @media(max-width:860px){
+    nav .wrap{flex-wrap:wrap;gap:12px;}
+    .navlinks{gap:16px;flex-wrap:wrap;}
+  }
   .navlinks a:hover{color:var(--navy);}
   .nav-cta{
     background:var(--ink);color:#fff;padding:9px 18px;border-radius:8px;font-weight:500;font-size:14px;
@@ -87,7 +93,9 @@
   }
   .hero-person-name{font-family:'Sora',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.2px;}
   .hero-person-role{font-size:13px;color:var(--muted);margin-top:3px;}
-  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:860px){.stat-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.stat-grid{grid-template-columns:1fr;}}
   .stat-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--line);}
   .stat-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--navy);}
   .stat-label{font-size:13px;color:var(--muted);margin-top:4px;}
@@ -119,7 +127,7 @@
 
   .bento{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 340px), 1fr));
     gap:24px;
     align-items:start;
   }
@@ -134,6 +142,10 @@
     transition:transform .15s, box-shadow .15s;
   }
   .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,23,43,0.08);}
+  @media (hover: none){
+    .card:hover{transform:none;box-shadow:none;}
+    .card:hover .card-shot img{transform:none;}
+  }
   .card.large,.card.small{min-height:0;padding:0;}
   .card-shot{
     display:block;aspect-ratio:16/10;overflow:hidden;background:#eceafc;
@@ -150,6 +162,9 @@
   .card h3{font-size:20px;margin-bottom:10px;}
   .card p{color:var(--muted);font-size:14.5px;margin-bottom:16px;}
   .card-stack{display:flex;flex-wrap:wrap;gap:8px;}
+  .trust-note{
+    margin-top:12px;font-size:12.5px;color:var(--muted);line-height:1.5;
+  }
   .stack-pill{font-size:12px;color:var(--ink);background:#fff;border:1px solid var(--line);padding:4px 10px;border-radius:14px;}
   .card-links{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;}
   .proj-link{
@@ -238,7 +253,10 @@
     transition:transform .2s, border-color .15s, background .15s;
   }
   .chevron svg{display:block;}
-  .card-expand summary:hover .chevron{border-color:var(--navy);background:#eceafc;}
+  .card-expand summary:hover .chevron,
+  .card-expand summary:focus .chevron,
+  .card-expand summary:focus-visible .chevron{border-color:var(--navy);background:#eceafc;}
+  .card-expand summary:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:8px;}
   .card-expand[open] .chevron{transform:rotate(180deg);border-color:var(--navy);}
   .desc-full{
     margin-top:14px;
@@ -289,7 +307,10 @@
   .p-arrow{color:var(--navy);font-weight:700;margin-right:6px;}
   .p-tag{
     display:inline-block;font-size:11.5px;font-weight:600;color:var(--navy);
-    background:#eceafc;padding:3px 9px;border-radius:6px;margin-left:10px;white-space:nowrap;
+    background:#eceafc;padding:3px 9px;border-radius:6px;margin-left:10px;
+  }
+  @media(max-width:700px){
+    .p-tag{margin-left:0;margin-top:6px;display:inline-block;}
   }
   .pattern-row.pattern-open{
     background:linear-gradient(120deg,#f3f1fd,#fdf1ee);
@@ -306,39 +327,41 @@
   .service p{font-size:14px;color:var(--muted);}
 
   /* CTA */
+  #contact{
+    background:linear-gradient(180deg,#f3f1fd 0%,#fff 48%);
+    scroll-margin-top:12px;
+  }
+  .contact-kicker{
+    font-family:'Sora',sans-serif;font-size:15px;font-weight:600;color:var(--navy);
+    margin-bottom:16px;
+  }
   .cta-section{
     background:var(--ink);border-radius:24px;padding:56px 48px;color:#fff;
-    display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start;
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;align-items:start;
   }
   @media(max-width:800px){
-    .cta-section{grid-template-columns:1fr;padding:40px 24px;}
+    .cta-section{grid-template-columns:1fr;padding:36px 20px;}
   }
   .cta-section h2{color:#fff;font-size:28px;max-width:16ch;}
   .cta-section p{color:#c7c9d6;margin-top:10px;max-width:40ch;}
   .cta-section .btn.primary{background:var(--coral);border:none;cursor:pointer;font-family:inherit;}
   .cta-section .btn.primary:hover{background:#ff8161;}
-  .cta-section .btn.ghost{
-    border:1.5px solid rgba(255,255,255,0.28);color:#fff;
-  }
-  .cta-section .btn.ghost:hover{border-color:#fff;}
-  .cta-meta{
-    display:flex;flex-wrap:wrap;gap:8px 22px;
-    margin-top:18px;font-size:14px;color:#c7c9d6;
-  }
-  .cta-meta a{color:#fff;font-weight:600;}
-  .cta-meta a:hover{color:var(--coral);}
   .contact-form{display:flex;flex-direction:column;gap:12px;}
   .contact-form label{font-size:12.5px;font-weight:600;color:#c7c9d6;}
   .contact-form input,.contact-form textarea{
     width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);
-    color:#fff;border-radius:9px;padding:12px 14px;font:inherit;font-size:14.5px;
+    color:#fff;border-radius:9px;padding:12px 14px;font:inherit;font-size:16px;
   }
   .contact-form input::placeholder,.contact-form textarea::placeholder{color:#8b8ea3;}
   .contact-form input:focus,.contact-form textarea:focus{
     outline:none;border-color:var(--coral);background:rgba(255,255,255,0.12);
   }
-  .contact-form textarea{min-height:120px;resize:vertical;}
+  .contact-form textarea{min-height:120px;resize:vertical;scroll-margin-bottom:40vh;}
   .contact-form .btn{width:fit-content;}
+  .form-trust{font-size:13.5px;color:#c7c9d6;margin:0;}
+  .form-alt{font-size:13px;color:#9ea1b3;margin-top:4px;max-width:none;}
+  .form-alt a{color:#fff;font-weight:600;}
+  .form-alt a:hover{color:var(--coral);}
   .form-status{font-size:13.5px;min-height:1.2em;}
   .form-status.ok{color:#86efac;}
   .form-status.err{color:#fda4af;}
@@ -387,10 +410,9 @@
         </div>
       </div>
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Full products, not slide decks</div></div>
-        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Live demos you can open today</div></div>
-        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Agents in one strategy run</div></div>
-        <div class="stat-card"><div class="stat-num">1 day</div><div class="stat-label">Typical reply time</div></div>
+        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Products shipped</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Live right now</div></div>
+        <div class="stat-card"><div class="stat-num">1 day</div><div class="stat-label">Typical reply</div></div>
       </div>
     </div>
   </div>
@@ -438,7 +460,7 @@
       <div class="bento-col bento-col-main">
       <div class="card large">
         <a class="card-shot" href="https://lexora-legal.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Lexora" data-wake="1">
-          <img src="assets/lexora.png" alt="Lexora lawyer dashboard" loading="lazy" decoding="async" width="600" height="375">
+          <img src="assets/lexora.png" alt="Lexora legal AI case management dashboard showing case list and chat panel" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Legal Tech</div>
@@ -477,6 +499,7 @@
             <span class="stack-pill">Pinecone</span>
             <span class="stack-pill">Groq</span>
           </div>
+          <p class="trust-note">In development testing: 40+ uploaded case PDFs across 3 practice areas — response time under 4s per query. Built and deployed solo — from schema design to AWS deployment — over several weeks.</p>
           <div class="card-links">
             <a class="proj-link live" href="https://lexora-legal.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Lexora" data-wake="1">
               <span class="live-dot"></span> <span class="live-label">Live</span>
@@ -489,7 +512,7 @@
 
       <div class="card large">
         <a class="card-shot" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="card" data-project="SupportAI">
-          <img src="assets/supportai.png" alt="SupportAI admin dashboard" loading="lazy" decoding="async" width="600" height="375">
+          <img src="assets/supportai.png" alt="SupportAI admin dashboard showing classified support tickets and agent queue" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Customer Support</div>
@@ -536,7 +559,7 @@
 
       <div class="card large">
         <a class="card-shot" href="https://fieldline.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Fieldline" data-wake="1">
-          <img src="assets/fieldline.png" alt="Fieldline document dashboard" loading="lazy" decoding="async" width="600" height="375">
+          <img src="assets/fieldline.png" alt="Fieldline document intelligence dashboard with PDF upload and extracted invoice fields" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Document AI</div>
@@ -574,6 +597,7 @@
             <span class="stack-pill">Celery</span>
             <span class="stack-pill">Groq</span>
           </div>
+          <p class="trust-note">In development testing: sample invoices, receipts, and freight bills — extract, review on the page, then export.</p>
           <div class="card-links">
             <a class="proj-link live" href="https://fieldline.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Fieldline" data-wake="1">
               <span class="live-dot"></span> <span class="live-label">Live</span>
@@ -587,7 +611,7 @@
       <div class="bento-col bento-col-side">
       <div class="card small">
         <a class="card-shot" href="https://ai-strategy.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Strategy Engine" data-wake="1">
-          <img src="assets/strategy.png" alt="Strategy Engine report" loading="lazy" decoding="async" width="600" height="375">
+          <img src="assets/strategy.png" alt="Autonomous AI Strategy Engine report with seven parallel agent outputs" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Multi-agent AI</div>
@@ -625,6 +649,7 @@
             <span class="stack-pill">Groq</span>
             <span class="stack-pill">Pinecone</span>
           </div>
+          <p class="trust-note">In development testing: 7 agents in one run — report streamed live via SSE.</p>
           <div class="card-links">
             <a class="proj-link live" href="https://ai-strategy.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Strategy Engine" data-wake="1">
               <span class="live-dot"></span> <span class="live-label">Live</span>
@@ -637,7 +662,7 @@
 
       <div class="card small">
         <a class="card-shot" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener" data-track="card" data-project="Deskline">
-          <img src="assets/deskline.png" alt="Deskline operations dashboard" loading="lazy" decoding="async" width="600" height="375">
+          <img src="assets/deskline.png" alt="Deskline hospitality voice-agent dashboard showing call history and bookings" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Hospitality</div>
@@ -672,7 +697,7 @@
         <div class="card-foot">
           <div class="card-stack">
             <span class="stack-pill">Twilio</span>
-            <span class="stack-pill">Deepgram</span>
+            <span class="stack-pill">Groq</span>
             <span class="stack-pill">FastAPI</span>
           </div>
           <div class="card-links">
@@ -688,7 +713,7 @@
           <h3>Got a messy workflow?</h3>
           <p class="card-lede">Tell me what your team does by hand. I’ll tell you what’s realistic to automate — and what isn’t.</p>
           <div class="card-links">
-            <a class="proj-link live" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-track="cta" data-project="Hire card">Email me →</a>
+            <a class="proj-link live" href="#contact" data-track="cta" data-project="Hire card">Start a project →</a>
           </div>
         </div>
       </div>
@@ -780,15 +805,11 @@
 
 <section id="contact">
   <div class="wrap">
+    <p class="contact-kicker">Ready to talk? This is the fastest way to reach me.</p>
     <div class="cta-section">
       <div>
         <h2>Got a workflow worth automating?</h2>
-        <p>Send a few lines about what your team does by hand. I reply within a day.</p>
-        <p>Available for contract engineering and full-stack AI automation builds.</p>
-        <div class="cta-meta">
-          <span>Email: <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a></span>
-          <span>WhatsApp: <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">+91 78761 24855</a></span>
-        </div>
+        <p>Send a few lines about what your team does by hand.</p>
       </div>
       <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/ascaisystems@gmail.com" method="POST">
         <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
@@ -801,8 +822,10 @@
         <input id="contact-email" name="email" type="email" placeholder="you@company.com" required autocomplete="email">
         <label for="contact-message">What should I look at?</label>
         <textarea id="contact-message" name="message" placeholder="What your team does by hand, and what you want instead." required></textarea>
+        <p class="form-trust">Goes straight to my inbox — I reply within a day.</p>
         <button class="btn primary" type="submit">Send message →</button>
         <p class="form-status" id="form-status" aria-live="polite"></p>
+        <p class="form-alt">Prefer email or WhatsApp instead? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">Email</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a></p>
       </form>
     </div>
   </div>
@@ -813,7 +836,7 @@
   <span id="live-toast-text">Opening the demo. First load can take 20–40 seconds if the server was idle.</span>
 </div>
 
-<footer>© 2026 Karan Chandel · <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a></footer>
+<footer>© 2026 Karan Chandel</footer>
 
 <script>
 (function () {
