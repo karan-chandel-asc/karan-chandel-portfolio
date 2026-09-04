@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Karan Chandel — AI tools you can click</title>
+<meta name="description" content="AI Engineer building production RAG pipelines, autonomous multi-agent systems, and voice automation workflows.">
+<meta property="og:title" content="Karan Chandel — AI Tools You Can Click">
+<meta property="og:description" content="Production AI applications: case-aware RAG legal platforms, parallel research engines, and document intelligence.">
+<meta property="og:image" content="assets/lexora.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -51,6 +62,9 @@
     margin-bottom:20px;
   }
   .hero p.lede{font-size:17.5px;color:var(--muted);max-width:46ch;margin-bottom:32px;}
+  .hero-note{margin-top:18px;font-size:14.5px;color:var(--muted);max-width:46ch;line-height:1.55;}
+  .hero-note a{color:var(--navy);font-weight:600;}
+  .hero-note a:hover{color:var(--coral);}
   .btn-row{display:flex;gap:14px;flex-wrap:wrap;}
   .btn{padding:13px 24px;border-radius:9px;font-weight:600;font-size:15px;display:inline-block;}
   .btn.primary{background:var(--navy);color:#fff;}
@@ -62,6 +76,17 @@
     background:linear-gradient(155deg,#eef0fb,#fdeee9 120%);
     border-radius:20px;padding:32px;border:1px solid var(--line);
   }
+  .hero-person{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);
+  }
+  .hero-photo{
+    width:84px;height:84px;border-radius:16px;object-fit:cover;object-position:center 18%;
+    border:3px solid #fff;flex-shrink:0;
+    box-shadow:0 6px 16px rgba(18,23,43,0.12);
+  }
+  .hero-person-name{font-family:'Sora',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.2px;}
+  .hero-person-role{font-size:13px;color:var(--muted);margin-top:3px;}
   .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
   .stat-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--line);}
   .stat-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--navy);}
@@ -75,15 +100,14 @@
 
   .bento{
     display:grid;
-    grid-template-columns:1.18fr 0.82fr;
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
+    gap:24px;
     align-items:start;
   }
-  .bento-col{display:flex;flex-direction:column;gap:20px;}
-  .bento-col-side{padding-top:28px;}
+  .bento-col{display:flex;flex-direction:column;gap:24px;}
+  .bento-col-side{padding-top:0;}
   @media(max-width:860px){
     .bento{grid-template-columns:1fr;}
-    .bento-col-side{padding-top:0;}
   }
   .card{
     background:var(--panel);border:1px solid var(--line);border-radius:16px;
@@ -92,7 +116,6 @@
   }
   .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(18,23,43,0.08);}
   .card.large,.card.small{min-height:0;padding:0;}
-  @media(max-width:860px){.card.large,.card.small{grid-column:span 1;}}
   .card-shot{
     display:block;aspect-ratio:16/10;overflow:hidden;background:#eceafc;
     border-bottom:1px solid var(--line);
@@ -119,6 +142,27 @@
   }
   .proj-link:hover{border-color:var(--navy);}
   .proj-link.live:hover{border-color:#16a34a;}
+  .proj-link.live.is-waking{border-color:#16a34a;background:#f0fdf4;}
+  .proj-link.live.is-waking .live-dot{
+    animation:wakespin .7s linear infinite;
+    background:transparent;box-shadow:none;
+    border:1.5px solid #22c55e;border-top-color:transparent;
+  }
+  @keyframes wakespin{to{transform:rotate(360deg);}}
+  .live-toast{
+    position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(12px);
+    z-index:40;display:flex;align-items:flex-start;gap:12px;
+    max-width:min(440px,calc(100vw - 32px));
+    background:var(--ink);color:#fff;border-radius:14px;padding:14px 16px;
+    font-size:13.5px;line-height:1.5;box-shadow:0 16px 40px rgba(18,23,43,.22);
+    opacity:0;pointer-events:none;transition:opacity .2s, transform .2s;
+  }
+  .live-toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+  .live-toast-spin{
+    width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:2px;
+    border:2px solid rgba(255,255,255,.25);border-top-color:var(--coral);
+    animation:wakespin .7s linear infinite;
+  }
   .live-dot{
     width:7px;height:7px;border-radius:50%;background:#22c55e;flex-shrink:0;
     box-shadow:0 0 0 0 rgba(34,197,94,.45);
@@ -244,14 +288,16 @@
 
   /* CTA */
   .cta-section{
-    background:var(--ink);border-radius:24px;padding:64px 48px;color:#fff;
-    display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;
+    background:var(--ink);border-radius:24px;padding:56px 48px;color:#fff;
+    display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start;
+  }
+  @media(max-width:800px){
+    .cta-section{grid-template-columns:1fr;padding:40px 24px;}
   }
   .cta-section h2{color:#fff;font-size:28px;max-width:16ch;}
   .cta-section p{color:#c7c9d6;margin-top:10px;max-width:40ch;}
-  .cta-section .btn.primary{background:var(--coral);}
+  .cta-section .btn.primary{background:var(--coral);border:none;cursor:pointer;font-family:inherit;}
   .cta-section .btn.primary:hover{background:#ff8161;}
-  .cta-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
   .cta-section .btn.ghost{
     border:1.5px solid rgba(255,255,255,0.28);color:#fff;
   }
@@ -262,6 +308,25 @@
   }
   .cta-meta a{color:#fff;font-weight:600;}
   .cta-meta a:hover{color:var(--coral);}
+  .contact-form{display:flex;flex-direction:column;gap:12px;}
+  .contact-form label{font-size:12.5px;font-weight:600;color:#c7c9d6;}
+  .contact-form input,.contact-form textarea{
+    width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);
+    color:#fff;border-radius:9px;padding:12px 14px;font:inherit;font-size:14.5px;
+  }
+  .contact-form input::placeholder,.contact-form textarea::placeholder{color:#8b8ea3;}
+  .contact-form input:focus,.contact-form textarea:focus{
+    outline:none;border-color:var(--coral);background:rgba(255,255,255,0.12);
+  }
+  .contact-form textarea{min-height:120px;resize:vertical;}
+  .contact-form .btn{width:fit-content;}
+  .form-status{font-size:13.5px;min-height:1.2em;}
+  .form-status.ok{color:#86efac;}
+  .form-status.err{color:#fda4af;}
+  .honeypot{position:absolute;left:-9999px;opacity:0;height:0;width:0;}
+  .proj-soon{
+    font-size:12px;font-weight:600;color:var(--muted);padding:6px 4px;
+  }
 
   footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px;text-align:center;}
   footer a{color:var(--navy);font-weight:500;}
@@ -289,10 +354,18 @@
       <p class="lede">Phone agents that book rooms, search that finds the clause in a 200-page PDF, and inboxes that sort themselves. Five products. Three of them are live right now.</p>
       <div class="btn-row">
         <a class="btn primary" href="#work">See the work</a>
-        <a class="btn outline" href="#contact">Email me</a>
+        <a class="btn outline" href="#contact">Start a project</a>
       </div>
+      <p class="hero-note">Currently taking on 1–2 select client builds — <a href="#contact">let's talk scope</a>.</p>
     </div>
     <div class="hero-visual">
+      <div class="hero-person">
+        <img class="hero-photo" src="assets/profile.png" alt="Karan Chandel" width="84" height="84" decoding="async">
+        <div>
+          <div class="hero-person-name">Karan Chandel</div>
+          <div class="hero-person-role">Builds AI tools you can click</div>
+        </div>
+      </div>
       <div class="stat-grid">
         <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Full products, not slide decks</div></div>
         <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Live demos you can open today</div></div>
@@ -314,8 +387,8 @@
     <div class="bento">
       <div class="bento-col bento-col-main">
       <div class="card large">
-        <a class="card-shot" href="http://15.252.17.34/" target="_blank" rel="noopener">
-          <img src="assets/lexora.png" alt="Lexora lawyer dashboard">
+        <a class="card-shot" href="https://lexora-legal.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Lexora" data-wake="1">
+          <img src="assets/lexora.png" alt="Lexora lawyer dashboard" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Legal Tech</div>
@@ -355,18 +428,18 @@
             <span class="stack-pill">Groq</span>
           </div>
           <div class="card-links">
-            <a class="proj-link live" href="http://15.252.17.34/" target="_blank" rel="noopener">
-              <span class="live-dot"></span> Live
+            <a class="proj-link live" href="https://lexora-legal.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Lexora" data-wake="1">
+              <span class="live-dot"></span> <span class="live-label">Live</span>
             </a>
-            <a class="proj-link" href="https://drive.google.com/file/d/1HV7-rRZnhPsL9fIy8KQ1CKWqnh5CRm1W/view?usp=sharing" target="_blank" rel="noopener">Watch demo</a>
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_Legal_AI_Case_Management_Platform/blob/master/README.md" target="_blank" rel="noopener">GitHub</a>
+            <a class="proj-link" href="https://drive.google.com/file/d/1HV7-rRZnhPsL9fIy8KQ1CKWqnh5CRm1W/view?usp=sharing" target="_blank" rel="noopener" data-track="demo" data-project="Lexora">Watch demo</a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_Legal_AI_Case_Management_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="github" data-project="Lexora">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="card large">
-        <a class="card-shot" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener">
-          <img src="assets/supportai.png" alt="SupportAI admin dashboard">
+        <a class="card-shot" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="card" data-project="SupportAI">
+          <img src="assets/supportai.png" alt="SupportAI admin dashboard" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Customer Support</div>
@@ -405,14 +478,15 @@
             <span class="stack-pill">Groq</span>
           </div>
           <div class="card-links">
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener">GitHub</a>
+            <span class="proj-soon">Live soon</span>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="github" data-project="SupportAI">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="card large">
-        <a class="card-shot" href="http://15.252.182.117/" target="_blank" rel="noopener">
-          <img src="assets/fieldline.png" alt="Fieldline document dashboard">
+        <a class="card-shot" href="https://fieldline.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Fieldline" data-wake="1">
+          <img src="assets/fieldline.png" alt="Fieldline document dashboard" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Document AI</div>
@@ -451,10 +525,10 @@
             <span class="stack-pill">Groq</span>
           </div>
           <div class="card-links">
-            <a class="proj-link live" href="http://15.252.182.117/" target="_blank" rel="noopener">
-              <span class="live-dot"></span> Live
+            <a class="proj-link live" href="https://fieldline.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Fieldline" data-wake="1">
+              <span class="live-dot"></span> <span class="live-label">Live</span>
             </a>
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/fieldline-document-intelligence/blob/setup_ui_and_auth/README.md" target="_blank" rel="noopener">GitHub</a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/fieldline-document-intelligence/blob/setup_ui_and_auth/README.md" target="_blank" rel="noopener" data-track="github" data-project="Fieldline">GitHub</a>
           </div>
         </div>
       </div>
@@ -462,8 +536,8 @@
 
       <div class="bento-col bento-col-side">
       <div class="card small">
-        <a class="card-shot" href="http://3.93.236.46:8000/" target="_blank" rel="noopener">
-          <img src="assets/strategy.png" alt="Strategy Engine report">
+        <a class="card-shot" href="https://ai-strategy.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Strategy Engine" data-wake="1">
+          <img src="assets/strategy.png" alt="Strategy Engine report" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Multi-agent AI</div>
@@ -502,18 +576,18 @@
             <span class="stack-pill">Pinecone</span>
           </div>
           <div class="card-links">
-            <a class="proj-link live" href="http://3.93.236.46:8000/" target="_blank" rel="noopener">
-              <span class="live-dot"></span> Live
+            <a class="proj-link live" href="https://ai-strategy.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Strategy Engine" data-wake="1">
+              <span class="live-dot"></span> <span class="live-label">Live</span>
             </a>
-            <a class="proj-link" href="https://drive.google.com/file/d/1tZ-6SqX62Te6gPT1s_nhXNWS10ctGmNq/view?usp=sharing" target="_blank" rel="noopener">Watch demo</a>
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Autonomous-Ai-Strategy-Engine/blob/main/README.md" target="_blank" rel="noopener">GitHub</a>
+            <a class="proj-link" href="https://drive.google.com/file/d/1tZ-6SqX62Te6gPT1s_nhXNWS10ctGmNq/view?usp=sharing" target="_blank" rel="noopener" data-track="demo" data-project="Strategy Engine">Watch demo</a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Autonomous-Ai-Strategy-Engine/blob/main/README.md" target="_blank" rel="noopener" data-track="github" data-project="Strategy Engine">GitHub</a>
           </div>
         </div>
       </div>
 
       <div class="card small">
-        <a class="card-shot" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener">
-          <img src="assets/deskline.png" alt="Deskline operations dashboard">
+        <a class="card-shot" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener" data-track="card" data-project="Deskline">
+          <img src="assets/deskline.png" alt="Deskline operations dashboard" loading="lazy" decoding="async" width="600" height="375">
         </a>
         <div class="card-body">
           <div class="card-tag">Hospitality</div>
@@ -552,7 +626,8 @@
             <span class="stack-pill">FastAPI</span>
           </div>
           <div class="card-links">
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener">GitHub</a>
+            <span class="proj-soon">Live soon</span>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener" data-track="github" data-project="Deskline">GitHub</a>
           </div>
         </div>
       </div>
@@ -563,7 +638,7 @@
           <h3>Got a messy workflow?</h3>
           <p class="card-lede">Tell me what your team does by hand. I’ll tell you what’s realistic to automate — and what isn’t.</p>
           <div class="card-links">
-            <a class="proj-link live" href="#contact">Email me →</a>
+            <a class="proj-link live" href="#contact" data-track="cta" data-project="Hire card">Email me →</a>
           </div>
         </div>
       </div>
@@ -659,20 +734,161 @@
       <div>
         <h2>Got a workflow worth automating?</h2>
         <p>Send a few lines about what your team does by hand. I reply within a day.</p>
+        <p>Available for contract engineering and full-stack AI automation builds.</p>
         <div class="cta-meta">
-          <span>Email: <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a></span>
+          <span>Email: <a href="mailto:ascaisystems@gmail.com?subject=Project%20inquiry">ascaisystems@gmail.com</a></span>
           <span>WhatsApp: <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">+91 78761 24855</a></span>
         </div>
       </div>
-      <div class="cta-actions">
-        <a class="btn primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">Email me →</a>
-        <a class="btn ghost" href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/ascaisystems@gmail.com" method="POST">
+        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_subject" value="Project inquiry from karan-chandel-portfolio">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label for="contact-name">Name</label>
+        <input id="contact-name" name="name" type="text" placeholder="Your name" required autocomplete="name">
+        <label for="contact-email">Email</label>
+        <input id="contact-email" name="email" type="email" placeholder="you@company.com" required autocomplete="email">
+        <label for="contact-message">What should I look at?</label>
+        <textarea id="contact-message" name="message" placeholder="What your team does by hand, and what you want instead." required></textarea>
+        <button class="btn primary" type="submit">Send message →</button>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </section>
 
-<footer>© 2026 Karan Chandel · <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a></footer>
+<div class="live-toast" id="live-toast" role="status" aria-live="polite">
+  <span class="live-toast-spin" aria-hidden="true"></span>
+  <span id="live-toast-text">Opening the demo. First load can take 20–40 seconds if the server was idle.</span>
+</div>
+
+<footer>© 2026 Karan Chandel · <a href="mailto:ascaisystems@gmail.com?subject=Project%20inquiry">ascaisystems@gmail.com</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a></footer>
+
+<script>
+(function () {
+  /* Paste IDs to send click events to GA4 / Plausible. Vercel Analytics is already on. */
+  var GA4_ID = "";
+  var PLAUSIBLE_DOMAIN = "";
+
+  function loadGa4(id) {
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", id, { anonymize_ip: true });
+  }
+
+  function loadPlausible(domain) {
+    var s = document.createElement("script");
+    s.defer = true;
+    s.setAttribute("data-domain", domain);
+    s.src = "https://plausible.io/js/script.tagged-events.js";
+    document.head.appendChild(s);
+  }
+
+  if (GA4_ID) loadGa4(GA4_ID);
+  if (PLAUSIBLE_DOMAIN) loadPlausible(PLAUSIBLE_DOMAIN);
+
+  function track(name, props) {
+    props = props || {};
+    if (typeof gtag === "function" && GA4_ID) {
+      gtag("event", name, {
+        event_category: "portfolio",
+        project: props.project || "",
+        action_type: props.action || ""
+      });
+    }
+    if (typeof va === "function") {
+      va("event", { name: name, data: { project: props.project || "", action: props.action || "" } });
+    }
+    if (typeof plausible === "function" && PLAUSIBLE_DOMAIN) {
+      plausible(name, { props: props });
+    }
+  }
+
+  var toast = document.getElementById("live-toast");
+  var toastText = document.getElementById("live-toast-text");
+  var toastTimer;
+
+  function showWakeToast(project) {
+    if (!toast) return;
+    toastText.textContent = (project || "Demo") + " is opening. First load can take 20–40 seconds if the server was idle.";
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 7000);
+  }
+
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest("a[data-track]");
+    if (!link) return;
+    var project = link.getAttribute("data-project") || "";
+    var action = link.getAttribute("data-track") || "click";
+    track("project_click", { project: project, action: action });
+
+    if (!link.getAttribute("data-wake")) return;
+    showWakeToast(project);
+    if (link.classList.contains("live")) {
+      link.classList.add("is-waking");
+      var label = link.querySelector(".live-label");
+      if (label) label.textContent = "Waking up…";
+      setTimeout(function () {
+        link.classList.remove("is-waking");
+        if (label) label.textContent = "Live";
+      }, 8000);
+    }
+  });
+
+  var form = document.getElementById("contact-form");
+  var status = document.getElementById("form-status");
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = form.querySelector("button[type=submit]");
+    var originalBtnText = btn.textContent;
+    var name = document.getElementById("contact-name").value.trim();
+    var email = document.getElementById("contact-email").value.trim();
+    var message = document.getElementById("contact-message").value.trim();
+    
+    status.className = "form-status";
+    status.textContent = "Sending…";
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    track("contact_submit", { project: "Contact", action: "form" });
+
+    fetch("https://formsubmit.co/ajax/ascaisystems@gmail.com", {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(form)
+    })
+      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+      .then(function (result) {
+        if (result.ok) {
+          status.className = "form-status ok";
+          status.textContent = "Got it. I’ll reply within a day.";
+          form.reset();
+          return;
+        }
+        throw new Error("formsubmit");
+      })
+      .catch(function () {
+        var body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message);
+        var su = encodeURIComponent("Project inquiry from " + name);
+        window.location.href = "mailto:ascaisystems@gmail.com?subject=" + su + "&body=" + body;
+        status.className = "form-status";
+        status.textContent = "Opening email client so you can send directly...";
+      })
+      .finally(function () { 
+        btn.disabled = false; 
+        btn.textContent = originalBtnText;
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
