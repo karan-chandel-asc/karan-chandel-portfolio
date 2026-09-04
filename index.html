@@ -825,14 +825,15 @@
         <h2>Got a workflow worth automating?</h2>
         <p>Send a few lines about what your team does by hand.</p>
         <p class="cta-reply">I reply within a day.</p>
-        <p class="form-alt cta-direct">Prefer to skip the form? <a href="mailto:ascaisystems@gmail.com?subject=Project%20inquiry" data-track="email" data-project="Contact">Email</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener" data-track="whatsapp" data-project="Contact">WhatsApp</a></p>
+        <p class="form-alt cta-direct">Prefer to skip the form? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-track="email" data-project="Contact">Email</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener" data-track="whatsapp" data-project="Contact">WhatsApp</a></p>
         <p class="cta-pdf">Need something to forward internally? <a href="assets/karan-chandel-onepager.pdf" download="Karan-Chandel-AI-Engineer.pdf" data-track="resume" data-project="One-pager">Download a one-page PDF</a>.</p>
       </div>
-      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/ascaisystems@gmail.com" method="POST">
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ascaisystems@gmail.com" method="POST">
         <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off">
         <input type="hidden" name="_subject" value="Project inquiry from karan-chandel-portfolio">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" id="form-next" value="https://karan-chandel-portfolio.vercel.app/?sent=1#contact">
         <label for="contact-name">Name</label>
         <input id="contact-name" name="name" type="text" placeholder="Your name" required autocomplete="name">
         <label for="contact-email">Email</label>
@@ -844,7 +845,7 @@
           <p class="form-promise">I reply within a day.</p>
         </div>
         <p class="form-status" id="form-status" aria-live="polite"></p>
-        <p class="form-alt">Prefer email or WhatsApp instead? <a href="mailto:ascaisystems@gmail.com?subject=Project%20inquiry" data-track="email" data-project="Contact">Email</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener" data-track="whatsapp" data-project="Contact">WhatsApp</a></p>
+        <p class="form-alt">Prefer email or WhatsApp instead? <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-track="email" data-project="Contact">Email</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener" data-track="whatsapp" data-project="Contact">WhatsApp</a></p>
       </form>
     </div>
   </div>
@@ -909,45 +910,27 @@
   var status = document.getElementById("form-status");
   if (!form) return;
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var btn = form.querySelector("button[type=submit]");
-    var originalBtnText = btn.textContent;
-    var name = document.getElementById("contact-name").value.trim();
-    var email = document.getElementById("contact-email").value.trim();
-    var message = document.getElementById("contact-message").value.trim();
-    
-    status.className = "form-status";
-    status.textContent = "Sending…";
-    btn.disabled = true;
-    btn.textContent = "Sending…";
-    track("contact_submit", { project: "Contact", action: "form" });
+  var next = document.getElementById("form-next");
+  if (next && location.protocol !== "file:") {
+    next.value = location.origin + location.pathname + "?sent=1#contact";
+  }
 
-    fetch("https://formsubmit.co/ajax/ascaisystems@gmail.com", {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: new FormData(form)
-    })
-      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-      .then(function (result) {
-        if (result.ok && result.data && result.data.success !== "false") {
-          status.className = "form-status ok";
-          status.textContent = "Got it. I’ll reply within a day.";
-          form.reset();
-          return;
-        }
-        throw new Error("formsubmit");
-      })
-      .catch(function () {
-        var su = encodeURIComponent("Project inquiry from " + name);
-        var body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message);
-        status.className = "form-status err";
-        status.innerHTML = "Couldn’t send the form. Email <a href=\"mailto:ascaisystems@gmail.com?subject=" + su + "&body=" + body + "\">ascaisystems@gmail.com</a> or <a href=\"https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project\" target=\"_blank\" rel=\"noopener\">WhatsApp</a> — I reply within a day.";
-      })
-      .finally(function () { 
-        btn.disabled = false; 
-        btn.textContent = originalBtnText;
-      });
+  if (/[?&]sent=1(?:&|$)/.test(location.search) && status) {
+    status.className = "form-status ok";
+    status.textContent = "Got it. I’ll reply within a day.";
+  }
+
+  form.addEventListener("submit", function () {
+    var btn = form.querySelector("button[type=submit]");
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = "Sending…";
+    }
+    if (status) {
+      status.className = "form-status";
+      status.textContent = "Sending…";
+    }
+    track("contact_submit", { project: "Contact", action: "form" });
   });
 })();
 </script>
