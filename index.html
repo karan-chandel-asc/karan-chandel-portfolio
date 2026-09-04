@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Karan Chandel — AI tools you can click</title>
-<meta name="description" content="AI Engineer building production RAG pipelines, autonomous multi-agent systems, and voice automation workflows.">
+<meta name="description" content="Karan Chandel — freelance AI engineer. I build RAG, voice agents, and document tools you can actually click.">
 <meta property="og:title" content="Karan Chandel — AI Tools You Can Click">
 <meta property="og:description" content="Production AI applications: case-aware RAG legal platforms, parallel research engines, and document intelligence.">
 <meta property="og:image" content="assets/lexora.png">
@@ -81,7 +81,7 @@
     margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--line);
   }
   .hero-photo{
-    width:84px;height:84px;border-radius:16px;object-fit:cover;object-position:center 18%;
+    width:84px;height:84px;border-radius:16px;object-fit:cover;object-position:center 22%;
     border:3px solid #fff;flex-shrink:0;
     box-shadow:0 6px 16px rgba(18,23,43,0.12);
   }
@@ -91,6 +91,25 @@
   .stat-card{background:#fff;border-radius:12px;padding:20px;border:1px solid var(--line);}
   .stat-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--navy);}
   .stat-label{font-size:13px;color:var(--muted);margin-top:4px;}
+
+  .about-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:start;
+  }
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-copy p{color:var(--muted);font-size:16px;max-width:54ch;margin-bottom:14px;}
+  .about-copy p:last-of-type{margin-bottom:0;}
+  .about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .about-panel{
+    background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:28px;
+  }
+  .about-photo{
+    width:100%;aspect-ratio:1;max-height:260px;object-fit:cover;object-position:center 22%;
+    border-radius:14px;border:1px solid var(--line);display:block;margin-bottom:18px;
+  }
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .about-fact{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .about-fact strong{display:block;font-family:'Sora',sans-serif;font-size:13px;font-weight:700;margin-bottom:4px;}
+  .about-fact span{font-size:13px;color:var(--muted);}
 
   /* PROJECTS - bento */
   section{padding:88px 0;}
@@ -340,6 +359,7 @@
     <div class="logo">Karan<span>.</span>Chandel</div>
     <div class="navlinks">
       <a href="#work">Work</a>
+      <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#contact" class="nav-cta">Start a project</a>
     </div>
@@ -360,10 +380,10 @@
     </div>
     <div class="hero-visual">
       <div class="hero-person">
-        <img class="hero-photo" src="assets/profile.png" alt="Karan Chandel" width="84" height="84" decoding="async">
+        <img class="hero-photo" src="assets/profile.jpg" alt="Karan Chandel" width="84" height="84" decoding="async">
         <div>
           <div class="hero-person-name">Karan Chandel</div>
-          <div class="hero-person-role">Builds AI tools you can click</div>
+          <div class="hero-person-role">AI engineer · ships full products</div>
         </div>
       </div>
       <div class="stat-grid">
@@ -375,6 +395,36 @@
     </div>
   </div>
 </header>
+
+<section id="about" style="background:var(--panel);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">About</div>
+      <h2>Who you’re hiring</h2>
+      <p>The products below are mine. Here’s the person behind them.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>I’m <strong style="color:var(--ink);font-weight:600;">Karan Chandel</strong>, an AI engineer who ships full products — not prototypes.</p>
+        <p>I turn manual workflows — case file searches, invoice entry, missed calls, email triage — into software people actually use. UI, API, deployment, all done by me. That’s why every project here has a Live link, not a screenshot.</p>
+        <p>Python, Django/FastAPI, LangChain/LangGraph, Twilio, Pinecone — whatever the product needs. 5 products shipped solo, 2+ years building production AI systems. No logo wall yet, just proof it works.</p>
+        <div class="about-links">
+          <a class="btn primary" href="#contact">Let’s talk</a>
+          <a class="btn outline" href="https://github.com/karan-chandel-asc" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="about-panel">
+        <img class="about-photo" src="assets/profile.jpg" alt="Karan Chandel" width="320" height="320">
+        <div class="about-facts">
+          <div class="about-fact"><strong>Role</strong><span>AI engineer</span></div>
+          <div class="about-fact"><strong>Experience</strong><span>2+ years, Python / production AI</span></div>
+          <div class="about-fact"><strong>I build</strong><span>Voice agents, RAG, agentic workflows</span></div>
+          <div class="about-fact"><strong>Stack</strong><span>Django, FastAPI, LangChain</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="work">
   <div class="wrap">
@@ -638,7 +688,7 @@
           <h3>Got a messy workflow?</h3>
           <p class="card-lede">Tell me what your team does by hand. I’ll tell you what’s realistic to automate — and what isn’t.</p>
           <div class="card-links">
-            <a class="proj-link live" href="#contact" data-track="cta" data-project="Hire card">Email me →</a>
+            <a class="proj-link live" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener" data-track="cta" data-project="Hire card">Email me →</a>
           </div>
         </div>
       </div>
@@ -736,7 +786,7 @@
         <p>Send a few lines about what your team does by hand. I reply within a day.</p>
         <p>Available for contract engineering and full-stack AI automation builds.</p>
         <div class="cta-meta">
-          <span>Email: <a href="mailto:ascaisystems@gmail.com?subject=Project%20inquiry">ascaisystems@gmail.com</a></span>
+          <span>Email: <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a></span>
           <span>WhatsApp: <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">+91 78761 24855</a></span>
         </div>
       </div>
@@ -763,7 +813,7 @@
   <span id="live-toast-text">Opening the demo. First load can take 20–40 seconds if the server was idle.</span>
 </div>
 
-<footer>© 2026 Karan Chandel · <a href="mailto:ascaisystems@gmail.com?subject=Project%20inquiry">ascaisystems@gmail.com</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a></footer>
+<footer>© 2026 Karan Chandel · <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ascaisystems@gmail.com&amp;su=Project%20inquiry" target="_blank" rel="noopener">ascaisystems@gmail.com</a> · <a href="https://wa.me/917876124855?text=Hi%20Karan%2C%20I%27d%20like%20to%20talk%20about%20a%20project" target="_blank" rel="noopener">WhatsApp</a></footer>
 
 <script>
 (function () {
@@ -829,6 +879,14 @@
     var action = link.getAttribute("data-track") || "click";
     track("project_click", { project: project, action: action });
 
+    var href = link.getAttribute("href") || "";
+    var isLiveDemo = !!link.getAttribute("data-wake") || (link.classList.contains("live") && /^https?:/i.test(href));
+
+    if (isLiveDemo && /^https?:/i.test(href)) {
+      e.preventDefault();
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+
     if (!link.getAttribute("data-wake")) return;
     showWakeToast(project);
     if (link.classList.contains("live")) {
@@ -878,9 +936,13 @@
       .catch(function () {
         var body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message);
         var su = encodeURIComponent("Project inquiry from " + name);
-        window.location.href = "mailto:ascaisystems@gmail.com?subject=" + su + "&body=" + body;
+        window.open(
+          "https://mail.google.com/mail/?view=cm&fs=1&to=ascaisystems@gmail.com&su=" + su + "&body=" + body,
+          "_blank",
+          "noopener"
+        );
         status.className = "form-status";
-        status.textContent = "Opening email client so you can send directly...";
+        status.textContent = "Opening Gmail so you can send it.";
       })
       .finally(function () { 
         btn.disabled = false; 
