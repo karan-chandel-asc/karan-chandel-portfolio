@@ -520,16 +520,16 @@
       </div>
 
       <div class="card large">
-        <a class="card-shot" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="card" data-project="SupportAI">
-          <img src="assets/supportai.webp" alt="SupportAI admin dashboard showing classified support tickets and agent queue" loading="lazy" decoding="async" width="1200" height="570">
+        <a class="card-shot" href="http://deskline-ai.duckdns.org/" target="_blank" rel="noopener" data-track="card" data-project="Deskline" data-wake="1">
+          <img src="assets/deskline.webp" alt="Deskline hospitality voice-agent dashboard showing call history and bookings" loading="lazy" decoding="async" width="1200" height="568">
         </a>
         <div class="card-body">
-          <div class="card-tag">Customer Support</div>
-          <h3>SupportAI — Customer Support Automation</h3>
-          <p class="card-lede">Inbound emails become classified, prioritized, and assigned tickets — with a separate queue for admins and agents.</p>
-          <p class="card-outcome"><span class="k">Result</span> Stops a shared inbox sitting unread for hours — mail arrives already classified, prioritized, and assigned.</p>
+          <div class="card-tag">Hospitality</div>
+          <h3>Deskline — AI Voice Agents for Hospitality</h3>
+          <p class="card-lede">AI answers the hotel or restaurant phone, books a room or a table, and logs the call into an ops console.</p>
+          <p class="card-outcome"><span class="k">Result</span> Takes the missed front-desk call and writes the booking — with transcripts, tools, and analytics.</p>
           <details class="card-expand">
-            <summary aria-label="Show SupportAI details">
+            <summary aria-label="Show Deskline details">
               <span>Details</span>
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -538,18 +538,18 @@
             <div class="desc-full">
               <h4>Problems it solves</h4>
               <ul>
-                <li>Support emails sit unread for hours because nobody triaged the shared inbox</li>
-                <li>An angry VIP looks the same as a password-reset in a pile of unsorted mail</li>
-                <li>Agents cherry-pick easy tickets and SLA on the hard ones slips</li>
-                <li>Managers cannot see volume, sentiment, or who owns what without a spreadsheet</li>
-                <li>The same “how do I reset…” reply gets typed out by hand every day</li>
-                <li>Weekend mail piles up until Monday with no routing and no owner</li>
+                <li>Front desk misses calls when the lobby is busy</li>
+                <li>Guests hang up instead of waiting on hold to book a room or a table</li>
+                <li>After-hours bookings go to voicemail and never get followed up</li>
+                <li>Staff retype the same reservation details into the system after every call</li>
+                <li>There is no record of what the caller asked or whether a booking was made</li>
+                <li>Hotels need a demo-ready console clients can trust on sight</li>
               </ul>
               <h4>Technical highlights</h4>
               <ul>
-                <li>IMAP poll of a shared support inbox creates or matches a customer and opens a ticket</li>
-                <li>Groq classifies category, priority, and sentiment, with a rule-based fallback</li>
-                <li>Admins see the full workspace; agents only see tickets in My Queue</li>
+                <li>Django + DRF + JWT ops console with Retell voice agents and tool webhooks</li>
+                <li>Room and table booking tools, call history, analytics, and browser test calls</li>
+                <li>Docker Compose stack deployed on AWS EC2</li>
               </ul>
             </div>
           </details>
@@ -557,12 +557,15 @@
         <div class="card-foot">
           <div class="card-stack">
             <span class="stack-pill">Django</span>
-            <span class="stack-pill">IMAP</span>
+            <span class="stack-pill">Retell</span>
             <span class="stack-pill">Groq</span>
           </div>
           <div class="card-links">
-            <span class="proj-soon">Live soon</span>
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="github" data-project="SupportAI">GitHub</a>
+            <a class="proj-link live" href="http://deskline-ai.duckdns.org/" target="_blank" rel="noopener" data-track="live" data-project="Deskline" data-wake="1">
+              <span class="live-dot"></span> <span class="live-label">Live</span>
+            </a>
+            <a class="proj-link" href="https://drive.google.com/file/d/1_bEuzB7uE2Hy5_4Ys7FgZBNtsLviUVrW/view?usp=drive_link" target="_blank" rel="noopener" data-track="demo" data-project="Deskline">Watch demo</a>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener" data-track="github" data-project="Deskline">GitHub</a>
           </div>
         </div>
       </div>
@@ -673,16 +676,16 @@
       </div>
 
       <div class="card small">
-        <a class="card-shot" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener" data-track="card" data-project="Deskline">
-          <img src="assets/deskline.webp" alt="Deskline hospitality voice-agent dashboard showing call history and bookings" loading="lazy" decoding="async" width="1200" height="568">
+        <a class="card-shot" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="card" data-project="SupportAI">
+          <img src="assets/supportai.webp" alt="SupportAI admin dashboard showing classified support tickets and agent queue" loading="lazy" decoding="async" width="1200" height="570">
         </a>
         <div class="card-body">
-          <div class="card-tag">Hospitality</div>
-          <h3>Deskline — AI Voice Agents for Hospitality</h3>
-          <p class="card-lede">AI answers the hotel or restaurant phone, books a room or a table, and logs the call — no Retell or Vapi.</p>
-          <p class="card-outcome"><span class="k">Result</span> Takes the missed front-desk call and writes the booking — own stack, no Retell/Vapi wrapper fee.</p>
+          <div class="card-tag">Customer Support</div>
+          <h3>SupportAI — Customer Support Automation</h3>
+          <p class="card-lede">Inbound emails become classified, prioritized, and assigned tickets — with a separate queue for admins and agents.</p>
+          <p class="card-outcome"><span class="k">Result</span> Stops a shared inbox sitting unread for hours — mail arrives already classified, prioritized, and assigned.</p>
           <details class="card-expand">
-            <summary aria-label="Show Deskline details">
+            <summary aria-label="Show SupportAI details">
               <span>Details</span>
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -691,31 +694,31 @@
             <div class="desc-full">
               <h4>Problems it solves</h4>
               <ul>
-                <li>Front desk misses calls when the lobby is busy</li>
-                <li>Guests hang up instead of waiting on hold to book a room or a table</li>
-                <li>After-hours bookings go to voicemail and never get followed up</li>
-                <li>Staff retype the same reservation details into the system after every call</li>
-                <li>There is no record of what the caller asked or whether a booking was made</li>
-                <li>Hotels do not want another monthly voice-AI wrapper fee on top of the phone bill</li>
+                <li>Support emails sit unread for hours because nobody triaged the shared inbox</li>
+                <li>An angry VIP looks the same as a password-reset in a pile of unsorted mail</li>
+                <li>Agents cherry-pick easy tickets and SLA on the hard ones slips</li>
+                <li>Managers cannot see volume, sentiment, or who owns what without a spreadsheet</li>
+                <li>The same “how do I reset…” reply gets typed out by hand every day</li>
+                <li>Weekend mail piles up until Monday with no routing and no owner</li>
               </ul>
               <h4>Technical highlights</h4>
               <ul>
-                <li>Owned stack: Twilio ConversationRelay + Groq + Django + FastAPI</li>
-                <li>Tool calling for book_room and book_table, saved to the local database</li>
-                <li>Dashboard, call history, and analytics for outcome and sentiment</li>
+                <li>IMAP poll of a shared support inbox creates or matches a customer and opens a ticket</li>
+                <li>Groq classifies category, priority, and sentiment, with a rule-based fallback</li>
+                <li>Admins see the full workspace; agents only see tickets in My Queue</li>
               </ul>
             </div>
           </details>
         </div>
         <div class="card-foot">
           <div class="card-stack">
-            <span class="stack-pill">Twilio</span>
+            <span class="stack-pill">Django</span>
+            <span class="stack-pill">IMAP</span>
             <span class="stack-pill">Groq</span>
-            <span class="stack-pill">FastAPI</span>
           </div>
           <div class="card-links">
-            <a class="proj-link" href="https://drive.google.com/file/d/1_bEuzB7uE2Hy5_4Ys7FgZBNtsLviUVrW/view?usp=drive_link" target="_blank" rel="noopener" data-track="demo" data-project="Deskline">Watch demo</a>
-            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/ai-voice-agent-platform/blob/main/README.md" target="_blank" rel="noopener" data-track="github" data-project="Deskline">GitHub</a>
+            <span class="proj-soon">Live soon</span>
+            <a class="proj-link readme" href="https://github.com/karan-chandel-asc/Enterprise_AI_Customer_Support_Automation_Platform/blob/master/README.md" target="_blank" rel="noopener" data-track="github" data-project="SupportAI">GitHub</a>
           </div>
         </div>
       </div>
@@ -765,13 +768,13 @@
       </div>
 
       <div class="pattern-row">
-        <div><span class="p-quote">"Support emails sit unread for hours."</span></div>
-        <div><span class="p-arrow">→</span> Email becomes a classified, assigned ticket <span class="p-tag">SupportAI</span></div>
+        <div><span class="p-quote">"Someone retypes every invoice by hand."</span></div>
+        <div><span class="p-arrow">→</span> Extract the fields, check them on the page, export <span class="p-tag">Fieldline</span></div>
       </div>
 
       <div class="pattern-row">
-        <div><span class="p-quote">"Someone retypes every invoice by hand."</span></div>
-        <div><span class="p-arrow">→</span> Extract the fields, check them on the page, export <span class="p-tag">Fieldline</span></div>
+        <div><span class="p-quote">"Support emails sit unread for hours."</span></div>
+        <div><span class="p-arrow">→</span> Email becomes a classified, assigned ticket <span class="p-tag">SupportAI</span></div>
       </div>
 
       <div class="pattern-row pattern-open">
