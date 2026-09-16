@@ -223,42 +223,14 @@
     font-size:10.5px;font-weight:700;letter-spacing:.35px;text-transform:uppercase;
     color:var(--navy);background:#eceafc;padding:3px 7px;border-radius:5px;
   }
-  .card-expand{margin:0 0 4px;}
-  .card-expand summary{
-    list-style:none;
-    cursor:pointer;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-size:12.5px;
-    font-weight:600;
-    color:var(--navy);
-    user-select:none;
-    width:fit-content;
-    max-width:100%;
-    flex-wrap:wrap;
-  }
-  .card-expand summary::-webkit-details-marker{display:none;}
-  .card-expand summary::marker{content:"";}
-  .chevron{
-    width:28px;height:28px;border-radius:50%;
-    border:1px solid var(--line);background:#fff;
-    display:inline-flex;align-items:center;justify-content:center;
-    transition:transform .2s, border-color .15s, background .15s;
-  }
-  .chevron svg{display:block;}
-  .card-expand summary:hover .chevron,
-  .card-expand summary:focus .chevron,
-  .card-expand summary:focus-visible .chevron{border-color:var(--navy);background:#eceafc;}
-  .card-expand summary:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:8px;}
-  .card-expand[open] .chevron{transform:rotate(180deg);border-color:var(--navy);}
-  .desc-full{
-    margin-top:14px;
-    padding:16px 16px 14px;
+  .card-problems{
+    margin:4px 0 8px;
+    padding:14px 16px 12px;
     background:#fff;
     border:1px solid var(--line);
     border-radius:12px;
   }
+  .card-problems h4,
   .desc-full h4{
     font-family:'Sora',sans-serif;
     font-size:11.5px;
@@ -266,23 +238,62 @@
     letter-spacing:.4px;
     text-transform:uppercase;
     color:var(--navy);
-    margin:14px 0 6px;
+    margin:0 0 8px;
   }
-  .desc-full h4:first-child{margin-top:0;}
-  .card .desc-full p{
-    color:var(--muted);
-    font-size:13.5px;
-    margin-bottom:0;
-    line-height:1.55;
-  }
+  .card-problems ul,
   .desc-full ul{
     margin:0;
     padding-left:18px;
     color:var(--muted);
     font-size:13.5px;
   }
+  .card-problems li,
   .desc-full li{margin-bottom:5px;}
+  .card-problems li:last-child,
   .desc-full li:last-child{margin-bottom:0;}
+  .card-expand{margin:0 0 4px;}
+  .card-expand summary{
+    list-style:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    user-select:none;
+    width:100%;
+    margin-top:2px;
+  }
+  .card-expand summary::-webkit-details-marker{display:none;}
+  .card-expand summary::marker{content:"";}
+  .chevron{
+    width:32px;height:32px;border-radius:50%;
+    border:1px solid var(--line);background:#fff;
+    display:inline-flex;align-items:center;justify-content:center;
+    color:var(--navy);
+    transition:transform .2s, border-color .15s, background .15s, box-shadow .15s;
+  }
+  .chevron svg{display:block;}
+  .card-expand summary:hover .chevron,
+  .card-expand summary:focus .chevron,
+  .card-expand summary:focus-visible .chevron{
+    border-color:var(--navy);background:#eceafc;
+    box-shadow:0 4px 10px rgba(55,48,163,0.12);
+  }
+  .card-expand summary:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:8px;}
+  .card-expand[open] .chevron{transform:rotate(180deg);border-color:var(--navy);}
+  .desc-full{
+    margin-top:10px;
+    padding:16px 16px 14px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+  }
+  .card .desc-full p{
+    color:var(--muted);
+    font-size:13.5px;
+    margin-bottom:0;
+    line-height:1.55;
+  }
 
   /* PATTERN TRANSLATOR */
   .pattern-table{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;}
@@ -475,23 +486,24 @@
           <h3>Deskline — AI Voice Agents for Hospitality</h3>
           <p class="card-lede">AI answers the hotel or restaurant phone, books a room or a table, and logs the call into an ops console.</p>
           <p class="card-outcome"><span class="k">Result</span> Takes the missed front-desk call and writes the booking — with transcripts, tools, and analytics.</p>
+          <div class="card-problems">
+            <h4>Problems it solves</h4>
+            <ul>
+              <li>Front desk misses calls when the lobby is busy</li>
+              <li>Guests hang up instead of waiting on hold to book a room or a table</li>
+              <li>After-hours bookings go to voicemail and never get followed up</li>
+              <li>Staff retype the same reservation details into the system after every call</li>
+              <li>There is no record of what the caller asked or whether a booking was made</li>
+              <li>Hotels need a demo-ready console clients can trust on sight</li>
+            </ul>
+          </div>
           <details class="card-expand">
-            <summary aria-label="Show Deskline details">
-              <span>Details</span>
+            <summary aria-label="Show Deskline technical details">
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </summary>
             <div class="desc-full">
-              <h4>Problems it solves</h4>
-              <ul>
-                <li>Front desk misses calls when the lobby is busy</li>
-                <li>Guests hang up instead of waiting on hold to book a room or a table</li>
-                <li>After-hours bookings go to voicemail and never get followed up</li>
-                <li>Staff retype the same reservation details into the system after every call</li>
-                <li>There is no record of what the caller asked or whether a booking was made</li>
-                <li>Hotels need a demo-ready console clients can trust on sight</li>
-              </ul>
               <h4>Technical highlights</h4>
               <ul>
                 <li>Django + DRF + JWT ops console with Retell voice agents and tool webhooks</li>
@@ -527,23 +539,24 @@
           <h3>Lexora — Legal AI Case Management</h3>
           <p class="card-lede">A workspace for law firms to manage cases, find answers in their own documents, and keep hearings in one place.</p>
           <p class="card-outcome"><span class="k">Result</span> Cuts case-file review from hours of re-reading to a cited answer in seconds.</p>
+          <div class="card-problems">
+            <h4>Problems it solves</h4>
+            <ul>
+              <li>A lawyer needs a clause from a 200-page PDF and cannot remember which file it was in</li>
+              <li>Associates spend hours re-reading the same case files the night before a hearing</li>
+              <li>Generic AI answers cannot be used with a client because there is no source to point to</li>
+              <li>Hearing dates live in notebooks or WhatsApp chats and get missed</li>
+              <li>Cases, documents, and notes are scattered across folders, email, and spreadsheets</li>
+              <li>A new associate joining a matter has no fast way to ask the file “what happened so far?”</li>
+            </ul>
+          </div>
           <details class="card-expand">
-            <summary aria-label="Show Lexora details">
-              <span>Details</span>
+            <summary aria-label="Show Lexora technical details">
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </summary>
             <div class="desc-full">
-              <h4>Problems it solves</h4>
-              <ul>
-                <li>A lawyer needs a clause from a 200-page PDF and cannot remember which file it was in</li>
-                <li>Associates spend hours re-reading the same case files the night before a hearing</li>
-                <li>Generic AI answers cannot be used with a client because there is no source to point to</li>
-                <li>Hearing dates live in notebooks or WhatsApp chats and get missed</li>
-                <li>Cases, documents, and notes are scattered across folders, email, and spreadsheets</li>
-                <li>A new associate joining a matter has no fast way to ask the file “what happened so far?”</li>
-              </ul>
               <h4>Technical highlights</h4>
               <ul>
                 <li>PDF upload pipeline: Django saves the file, Celery chunks and embeds, Pinecone stores vectors by case</li>
@@ -580,23 +593,24 @@
           <h3>SupportAI — Customer Support Automation</h3>
           <p class="card-lede">Inbound emails become classified, prioritized, and assigned tickets — with a separate queue for admins and agents.</p>
           <p class="card-outcome"><span class="k">Result</span> Stops a shared inbox sitting unread for hours — mail arrives already classified, prioritized, and assigned.</p>
+          <div class="card-problems">
+            <h4>Problems it solves</h4>
+            <ul>
+              <li>Support emails sit unread for hours because nobody triaged the shared inbox</li>
+              <li>An angry VIP looks the same as a password-reset in a pile of unsorted mail</li>
+              <li>Agents cherry-pick easy tickets and SLA on the hard ones slips</li>
+              <li>Managers cannot see volume, sentiment, or who owns what without a spreadsheet</li>
+              <li>The same “how do I reset…” reply gets typed out by hand every day</li>
+              <li>Weekend mail piles up until Monday with no routing and no owner</li>
+            </ul>
+          </div>
           <details class="card-expand">
-            <summary aria-label="Show SupportAI details">
-              <span>Details</span>
+            <summary aria-label="Show SupportAI technical details">
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </summary>
             <div class="desc-full">
-              <h4>Problems it solves</h4>
-              <ul>
-                <li>Support emails sit unread for hours because nobody triaged the shared inbox</li>
-                <li>An angry VIP looks the same as a password-reset in a pile of unsorted mail</li>
-                <li>Agents cherry-pick easy tickets and SLA on the hard ones slips</li>
-                <li>Managers cannot see volume, sentiment, or who owns what without a spreadsheet</li>
-                <li>The same “how do I reset…” reply gets typed out by hand every day</li>
-                <li>Weekend mail piles up until Monday with no routing and no owner</li>
-              </ul>
               <h4>Technical highlights</h4>
               <ul>
                 <li>IMAP poll of a shared support inbox creates or matches a customer and opens a ticket</li>
@@ -630,23 +644,24 @@
           <h3>Autonomous AI Strategy Engine</h3>
           <p class="card-lede">Give it a business question. Seven agents research in parallel and hand back one strategy report.</p>
           <p class="card-outcome"><span class="k">Result</span> Turns weeks of tab-and-doc research into one strategy report from 7 agents in a single run.</p>
+          <div class="card-problems">
+            <h4>Problems it solves</h4>
+            <ul>
+              <li>A founder spends weeks researching a market move and still has no single report to share</li>
+              <li>Competitive notes live in five browser tabs and a messy Google Doc</li>
+              <li>Strategy decks skip risk because nobody had time to look it up</li>
+              <li>The team debates expansion with opinions instead of sources</li>
+              <li>Uploaded research PDFs never get used when the actual plan is written</li>
+              <li>Waiting on a consultant for a first-pass strategy that should take one afternoon</li>
+            </ul>
+          </div>
           <details class="card-expand">
-            <summary aria-label="Show Strategy Engine details">
-              <span>Details</span>
+            <summary aria-label="Show Strategy Engine technical details">
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </summary>
             <div class="desc-full">
-              <h4>Problems it solves</h4>
-              <ul>
-                <li>A founder spends weeks researching a market move and still has no single report to share</li>
-                <li>Competitive notes live in five browser tabs and a messy Google Doc</li>
-                <li>Strategy decks skip risk because nobody had time to look it up</li>
-                <li>The team debates expansion with opinions instead of sources</li>
-                <li>Uploaded research PDFs never get used when the actual plan is written</li>
-                <li>Waiting on a consultant for a first-pass strategy that should take one afternoon</li>
-              </ul>
               <h4>Technical highlights</h4>
               <ul>
                 <li>7 parallel agents covering market, competitors, risk, monetization, and roadmap</li>
@@ -682,23 +697,24 @@
           <h3>Fieldline — Document Intelligence</h3>
           <p class="card-lede">Upload PDFs, extract the fields, check them on the page, then export JSON or CSV — without retyping invoices.</p>
           <p class="card-outcome"><span class="k">Result</span> Cuts invoice entry from retyping every field to extract, check on the page, export.</p>
+          <div class="card-problems">
+            <h4>Problems it solves</h4>
+            <ul>
+              <li>Someone retypes every invoice into a spreadsheet by hand</li>
+              <li>A wrong amount gets copied and nobody notices until the client calls</li>
+              <li>Different document layouts break a one-size-fits-all template</li>
+              <li>Ops cannot tell which files failed versus which still need a human look</li>
+              <li>Extracted data has no way back to the PDF page it came from</li>
+              <li>Shipping JSON to another system means another round of copy-paste</li>
+            </ul>
+          </div>
           <details class="card-expand">
-            <summary aria-label="Show Fieldline details">
-              <span>Details</span>
+            <summary aria-label="Show Fieldline technical details">
               <span class="chevron" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.2 4.2L6 8l3.8-3.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </summary>
             <div class="desc-full">
-              <h4>Problems it solves</h4>
-              <ul>
-                <li>Someone retypes every invoice into a spreadsheet by hand</li>
-                <li>A wrong amount gets copied and nobody notices until the client calls</li>
-                <li>Different document layouts break a one-size-fits-all template</li>
-                <li>Ops cannot tell which files failed versus which still need a human look</li>
-                <li>Extracted data has no way back to the PDF page it came from</li>
-                <li>Shipping JSON to another system means another round of copy-paste</li>
-              </ul>
               <h4>Technical highlights</h4>
               <ul>
                 <li>Celery renders each page with PyMuPDF and captures word boxes</li>
